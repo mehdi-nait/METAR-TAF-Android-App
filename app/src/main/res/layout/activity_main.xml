@@ -18,38 +18,66 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/txt_activite1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/code_text"
-                android:id="@+id/txt_activite1"
-                android:textSize="30dp"
-                android:textColor="@color/text_color">
+                android:textColor="@color/text_color"
+                android:textSize="30dp">
 
             </TextView>
 
             <EditText
+                android:id="@+id/OACI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/OACI"
-                android:textColor="@color/text_color">
-            </EditText>
+                android:textColor="@color/text_color"></EditText>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">
+
                 <Button
+                    android:id="@+id/find_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/find_button"
-                    android:text="@string/find"
+                    android:backgroundTint="@color/bar_color"
                     android:gravity="center"
-                    android:backgroundTint="@color/bar_color"></Button>
+                    android:text="@string/find"></Button>
             </LinearLayout>
 
         </LinearLayout>
 
     </FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bar_color">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/cone"
+                android:layout_gravity="center">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Astre 2022, all rights reserved."
+                android:textColor="@color/text_color"/>
+        </LinearLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </RelativeLayout>
