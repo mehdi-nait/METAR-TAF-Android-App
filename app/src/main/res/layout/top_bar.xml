@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*" >
+        <TableRow android:layout_width="fill_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+
+                android:src="@drawable/home"
+                android:layout_column="0"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp"
+                android:src="@drawable/logo"
+                android:layout_column="1"/>
+
+            <LinearLayout android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_column="2"
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:layout_marginEnd="25dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/info"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/settings" />
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+
+
+</RelativeLayout>
