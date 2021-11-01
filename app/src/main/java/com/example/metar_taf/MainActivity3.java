@@ -1,24 +1,29 @@
 package com.example.metar_taf;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity2 extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-    TextView code ;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.example.metar_taf.databinding.ActivityMain3Binding;
+
+public class MainActivity3 extends AppCompatActivity {
+
+    protected ActivityMain3Binding binding;
     ImageView home;
     ImageView info;
     ImageView logo;
@@ -26,7 +31,6 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
 
         ActionBar actionBar =  getSupportActionBar();
 
@@ -45,7 +49,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent_home = new Intent(
-                        MainActivity2.this,
+                        MainActivity3.this,
                         MainActivity.class
                 );
                 startActivity(intent_home);
@@ -58,16 +62,26 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent_home = new Intent(
-                        MainActivity2.this,
+                        MainActivity3.this,
                         MainActivity.class
                 );
                 startActivity(intent_home);
             }
         });
 
-        code = findViewById(R.id.txt_code);
 
-        String received_code = this.getIntent().getExtras().get("message").toString();
-        code.setText(received_code);
+        binding = ActivityMain3Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_dashboard, R.id.navigation_home, R.id.navigation_notifications)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main3);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navView, navController);
     }
+
 }
