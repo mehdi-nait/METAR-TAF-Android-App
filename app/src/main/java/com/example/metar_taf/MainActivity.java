@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(
                         MainActivity.this,
-                        MainActivity3.class
+                        MainActivity2.class
                 );
                 intent.putExtra("message",code.getText().toString());
                 startActivity(intent);

@@ -7,4 +7,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="activity_2_text">where are we headed tonight ?</string>
+    <string name="Button_activity2">add destination</string>
 </resources>

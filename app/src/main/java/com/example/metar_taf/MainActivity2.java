@@ -10,18 +10,25 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity2 extends AppCompatActivity {
 
-    TextView code ;
-    ImageView home;
-    ImageView info;
-    ImageView logo;
+    ListView list;
+    ImageView home,info,logo;
+    Button add_destination,clear;
+    EditText OACI2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,13 @@ public class MainActivity2 extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.top_bar,null);
         actionBar.setCustomView(view);
+
+        //List adapter
+        ArrayAdapter<String> adapter;
+        ArrayList searchList;
+        searchList = new ArrayList<String>();
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, searchList);
+
 
         //Home button
         home = findViewById(R.id.home_button);
@@ -65,9 +79,33 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
-        code = findViewById(R.id.txt_code);
+        //code = findViewById(R.id.txt_code);
 
+        //Getting code from intent
         String received_code = this.getIntent().getExtras().get("message").toString();
-        code.setText(received_code);
+
+        list = (ListView) findViewById(R.id.list_codes);
+        OACI2 = (EditText) findViewById(R.id.OACI2);
+        clear = (Button) findViewById(R.id.clear);
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchList.clear();
+                list.setAdapter(adapter);
+            }
+        });
+
+        add_destination = (Button) findViewById(R.id.add_destination);
+        add_destination.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchList.add(OACI2.getText().toString());
+                list.setAdapter(adapter);
+            }
+        });
+
+
+
     }
 }
