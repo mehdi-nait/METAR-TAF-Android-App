@@ -83,7 +83,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         //Getting code from intent
         String received_code = this.getIntent().getExtras().get("message").toString();
-
+        searchList.add(received_code);
         list = (ListView) findViewById(R.id.list_codes);
         OACI2 = (EditText) findViewById(R.id.OACI2);
         clear = (Button) findViewById(R.id.clear);

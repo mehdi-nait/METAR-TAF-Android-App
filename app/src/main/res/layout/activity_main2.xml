@@ -32,8 +32,9 @@
             <EditText
                 android:id="@+id/OACI2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_color"></EditText>
+                android:layout_height="30dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/bar_color"></EditText>
 
             <Button
                 android:layout_width="wrap_content"
@@ -48,6 +49,7 @@
                 android:id="@+id/list_codes"
                 android:layout_width="match_parent"
                 android:layout_height="358dp"
+                android:background="@color/white"
                 android:layout_centerHorizontal="true" />
 
             <Button
