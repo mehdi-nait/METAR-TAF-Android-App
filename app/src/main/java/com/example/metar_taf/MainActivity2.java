@@ -11,15 +11,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
-<<<<<<< HEAD
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-=======
+
 import android.view.LayoutInflater;
 import android.view.View;
->>>>>>> 639b3a0ca3e3c85ca74b17952561698f2f161600
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +28,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
+
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,9 +40,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-=======
+
 import java.util.ArrayList;
->>>>>>> 639b3a0ca3e3c85ca74b17952561698f2f161600
+
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -50,11 +50,11 @@ public class MainActivity2 extends AppCompatActivity {
     ImageView home,info,logo;
     Button add_destination,clear;
     EditText OACI2;
-<<<<<<< HEAD
-    private static final String TAG = "API_Service";
-=======
 
->>>>>>> 639b3a0ca3e3c85ca74b17952561698f2f161600
+    private static final String TAG = "API_Service";
+    String query = "LFPG";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,45 +123,39 @@ public class MainActivity2 extends AppCompatActivity {
 
         add_destination = (Button) findViewById(R.id.add_destination);
         add_destination.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-<<<<<<< HEAD
-                String code = OACI2.getText().toString();
 
-                    new API_Service().searchMETAR(code, new Callback() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          query = OACI2.getText().toString();
+                                          new API_Service().searchMETAR(query, new Callback() {
 
-                    @Override
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                                              @Override
+                                              public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
-                    }
+                                              }
 
-                    @Override
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                        final Gson gson = new Gson();
-                        Log.d(TAG, "response from service = " + response);
+                                              @Override
+                                              public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                                                  final Gson gson = new Gson();
+                                                  Log.d(TAG, "response from service = " + response);
 
-                        ResponseBody body = response.body();
-                        String value = body.string();
+                                                  ResponseBody body = response.body();
+                                                  String value = body.string();
 
-                        Log.d(TAG, "response body to string =" + value);
-                        METAR metar = gson.fromJson(value, METAR.class);
+                                                  Log.d(TAG, "response body to string =" + value);
+                                                  METAR metar = gson.fromJson(value, METAR.class);
 
-                        Log.d(TAG, "response  en json =" + metar.toString());
+                                                  Log.d(TAG, "response  en json =" + metar.toString());
 
-                        Log.d(TAG, "temp = " + metar.getTemperature().getValue() + "°C");
+                                                  Log.d(TAG, "temp = " + metar.getTemperature().getValue() + "°C");
 
-                    }
-                });
-
-                searchList.add(code);
-                list.setAdapter(adapter);
-
-=======
-                searchList.add(OACI2.getText().toString());
-                list.setAdapter(adapter);
->>>>>>> 639b3a0ca3e3c85ca74b17952561698f2f161600
-            }
-        });
+                                              }
+                                          });
+                                          searchList.add(query);
+                                          adapter.notifyDataSetChanged();
+                                      }
+                                  }
+        );
 
 
 
