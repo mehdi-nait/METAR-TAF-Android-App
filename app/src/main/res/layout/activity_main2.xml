@@ -50,6 +50,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="358dp"
                 android:background="@color/white"
+<<<<<<< HEAD
+                style="@style/ListFront"
+=======
+>>>>>>> 639b3a0ca3e3c85ca74b17952561698f2f161600
                 android:layout_centerHorizontal="true" />
 
             <Button
