@@ -42,6 +42,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity2 extends AppCompatActivity {
@@ -72,11 +74,9 @@ public class MainActivity2 extends AppCompatActivity {
         actionBar.setCustomView(view);
 
         //List adapter
-        ArrayAdapter<String> adapter;
-        ArrayList searchList;
-        searchList = new ArrayList<String>();
-        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, searchList);
-
+        List<Aeroport> list_aero = new ArrayList<>();
+        ListView list_view = (ListView) findViewById(R.id.list_aero);
+        list_view.setAdapter(new AeroportListAdapter(getApplicationContext(),list_aero));
 
         //Home button
         home = findViewById(R.id.home_button);
@@ -108,16 +108,19 @@ public class MainActivity2 extends AppCompatActivity {
 
         //Getting code from intent
         String received_code = this.getIntent().getExtras().get("message").toString();
-        searchList.add(received_code);
-        list = (ListView) findViewById(R.id.list_codes);
+        list_aero.add(new Aeroport(received_code.toUpperCase()));
+        list_view.setAdapter(new AeroportListAdapter(this,list_aero));
+
+
+        list = (ListView) findViewById(R.id.list_aero);
         OACI2 = (EditText) findViewById(R.id.OACI2);
         clear = (Button) findViewById(R.id.clear);
 
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchList.clear();
-                list.setAdapter(adapter);
+                list_aero.clear();
+                list_view.setAdapter(new AeroportListAdapter(getApplicationContext(),list_aero));
             }
         });
 
@@ -131,7 +134,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                                               @Override
                                               public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
+                                                  Toast.makeText(getApplicationContext(), "Error, OACI Invalid!", Toast.LENGTH_SHORT).show();
                                               }
 
                                               @Override
@@ -151,11 +154,13 @@ public class MainActivity2 extends AppCompatActivity {
 
                                               }
                                           });
-                                          searchList.add(query);
-                                          adapter.notifyDataSetChanged();
+                                          list_aero.add(new Aeroport(query.toUpperCase()));
+                                          list_view.deferNotifyDataSetChanged();
                                       }
                                   }
         );
+
+
 
 
 

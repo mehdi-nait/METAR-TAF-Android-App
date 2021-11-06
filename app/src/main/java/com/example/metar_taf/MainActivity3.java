@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -82,6 +83,10 @@ public class MainActivity3 extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main3);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        Intent intent = getIntent();
+        Aeroport aeroport = (Aeroport) intent.getSerializableExtra("aeroport");
+        Toast.makeText(getApplicationContext(), aeroport.getOACI(), Toast.LENGTH_LONG).show();
     }
 
 }
