@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_taf"
+        android:icon="@drawable/taf_selector"
+        android:title="TAF"
+        ></item>
+
+    <item android:id="@+id/nav_airport"
+        android:icon="@drawable/airport_selector"
+        android:title="Airport"
+        ></item>
+
+    <item android:id="@+id/nav_metar"
+        android:icon="@drawable/metar_selector"
+        android:title="METAR"
+        ></item>
+</menu>
