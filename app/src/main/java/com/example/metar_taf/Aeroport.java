@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.metar_taf.pojo_metar.METAR;
+import com.example.metar_taf.pojo_station.Station;
 import com.example.metar_taf.pojo_taf.Taf;
 import com.google.gson.Gson;
 
@@ -24,6 +25,7 @@ import okhttp3.ResponseBody;
 public class Aeroport implements Serializable {
     private String OACI;
     private METAR metar;
+    private Station station;
 
 
 
@@ -31,6 +33,14 @@ public class Aeroport implements Serializable {
     public Aeroport(String OACI)  {
         this.OACI = OACI;
 
+    }
+
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
     }
 
     public String getOACI() {

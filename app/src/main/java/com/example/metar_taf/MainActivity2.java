@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.metar_taf.pojo_station.Station;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -107,9 +108,10 @@ public class MainActivity2 extends AppCompatActivity {
         //code = findViewById(R.id.txt_code);
 
         //Getting code from intent
-        String received_code = this.getIntent().getExtras().get("message").toString();
-        list_aero.add(new Aeroport(received_code.toUpperCase()));
-        list_view.setAdapter(new AeroportListAdapter(this,list_aero));
+        //String received_code = this.getIntent().getExtras().get("message").toString();
+        //list_aero.add(new Aeroport(received_code.toUpperCase()));
+        //list_view.setAdapter(new AeroportListAdapter(this,list_aero));
+
 
 
         list = (ListView) findViewById(R.id.list_aero);
@@ -123,7 +125,7 @@ public class MainActivity2 extends AppCompatActivity {
                 list_view.setAdapter(new AeroportListAdapter(getApplicationContext(),list_aero));
             }
         });
-        METAR _metar = new METAR();
+
         add_destination = (Button) findViewById(R.id.add_destination);
         add_destination.setOnClickListener(new View.OnClickListener() {
 
@@ -141,21 +143,49 @@ public class MainActivity2 extends AppCompatActivity {
                                               @Override
                                               public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                                   final Gson gson = new Gson();
-                                                  //Log.d(TAG, "response from service = " + response);
+                                                  Log.d(TAG, "response from service = " + response);
 
                                                   ResponseBody body = response.body();
                                                   String value = body.string();
 
-                                                  //Log.d(TAG, "response body to string =" + value);
+                                                  Log.d(TAG, "response body to string =" + value);
                                                   METAR metar = gson.fromJson(value, METAR.class);
-                                                  //_metar.setCopy(metar);
-                                                  //Log.d(TAG, "response  en json =" + metar.toString());
 
-                                                  //Log.d(TAG, "temp = " + metar.getTemperature().getValue() + "°C");
-                                                  //Log.d(TAG, "temp = " + metar.getWindSpeed().getValue() + "kt");
+                                                  Log.d(TAG, "response  en json =" + metar.toString());
+
+                                                  Log.d(TAG, "temp = " + metar.getTemperature().getValue() + "°C");
+                                                  Global.metar = metar;
 
                                               }
+
                                           });
+                                          new API_Service().searchSTATION(query, new Callback() {
+
+                                              @Override
+                                              public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                                                  Toast.makeText(getApplicationContext(), "Error, OACI Invalid!", Toast.LENGTH_SHORT).show();
+                                              }
+
+                                              @Override
+                                              public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                                                  final Gson gson = new Gson();
+                                                  Log.d(TAG, "response from service = " + response);
+
+                                                  ResponseBody body = response.body();
+                                                  String value = body.string();
+
+                                                  Log.d(TAG, "response body to string =" + value);
+                                                  Station station = gson.fromJson(value, Station.class);
+
+                                                  Log.d(TAG, "response  en json =" + station.toString());
+
+
+                                                  Global.station = station;
+
+                                              }
+
+                                          });
+
                                           list_aero.add(new Aeroport(query.toUpperCase()));
                                           list_view.deferNotifyDataSetChanged();
                                           //Log.d("API_Service",_metar.toString());

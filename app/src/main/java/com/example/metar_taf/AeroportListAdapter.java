@@ -70,19 +70,31 @@ public class AeroportListAdapter extends BaseAdapter {
         TextView vent = (TextView) view.findViewById(R.id.Aero_wind);
 
         OACI.setText(aero.getOACI());
+        aero.setMetar(Global.metar);
+        aero.setStation(Global.station);
 
+        temperature.setText(Global.metar.getTemperature().getValue().toString()+"°C");
+        pression.setText(aero.getMetar().getAltimeter().getValue().toString()+"hPa");
+        nuages.setText(aero.getMetar().getClouds().get(0).getRepr().toString());
+        vent.setText(aero.getMetar().getWindSpeed().getValue().toString()+"kt");
 
+        String[] arrOfStr = aero.getMetar().getMeta().getTimestamp().toString().split("T");
+        date.setText(arrOfStr[0]);
+        //String[] arrOfstr = arrOfStr[1].split(".");
+        time.setText(arrOfStr[1]);
+        city.setText(aero.getStation().getCity().toString()+" "+ aero.getStation().getName().toString());
 
-
+        //pression.setText(aero.getMetar().getAltimeter().getValue().toString()+"hPa");
 
 
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(view.getContext(),MainActivity3.class);
-                intent.putExtra("aeroport",(Aeroport) getItem(i));
-                context.startActivity(intent);*/
+                Intent intent = new Intent(view.getContext(),MainActivity3.class);
+                //intent.putExtra("aeroport",(Aeroport) getItem(i));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
 
