@@ -123,13 +123,14 @@ public class MainActivity2 extends AppCompatActivity {
                 list_view.setAdapter(new AeroportListAdapter(getApplicationContext(),list_aero));
             }
         });
-
+        METAR _metar = new METAR();
         add_destination = (Button) findViewById(R.id.add_destination);
         add_destination.setOnClickListener(new View.OnClickListener() {
 
                                       @Override
                                       public void onClick(View v) {
                                           query = OACI2.getText().toString();
+
                                           new API_Service().searchMETAR(query, new Callback() {
 
                                               @Override
@@ -140,29 +141,37 @@ public class MainActivity2 extends AppCompatActivity {
                                               @Override
                                               public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                                   final Gson gson = new Gson();
-                                                  Log.d(TAG, "response from service = " + response);
+                                                  //Log.d(TAG, "response from service = " + response);
 
                                                   ResponseBody body = response.body();
                                                   String value = body.string();
 
-                                                  Log.d(TAG, "response body to string =" + value);
+                                                  //Log.d(TAG, "response body to string =" + value);
                                                   METAR metar = gson.fromJson(value, METAR.class);
+                                                  //_metar.setCopy(metar);
+                                                  //Log.d(TAG, "response  en json =" + metar.toString());
 
-                                                  Log.d(TAG, "response  en json =" + metar.toString());
-
-                                                  Log.d(TAG, "temp = " + metar.getTemperature().getValue() + "°C");
+                                                  //Log.d(TAG, "temp = " + metar.getTemperature().getValue() + "°C");
+                                                  //Log.d(TAG, "temp = " + metar.getWindSpeed().getValue() + "kt");
 
                                               }
                                           });
                                           list_aero.add(new Aeroport(query.toUpperCase()));
                                           list_view.deferNotifyDataSetChanged();
+                                          //Log.d("API_Service",_metar.toString());
                                       }
+
                                   }
+
+
         );
 
+        //Log.d("API_Service",_metar.toString());
 
 
 
 
     }
+
+
 }

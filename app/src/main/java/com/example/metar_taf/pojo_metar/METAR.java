@@ -4,9 +4,10 @@ package com.example.metar_taf.pojo_metar;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class METAR {
+public class METAR implements Serializable {
 
     @SerializedName("meta")
     @Expose
@@ -263,6 +264,33 @@ public class METAR {
 
     public void setPressureAltitude(Integer pressureAltitude) {
         this.pressureAltitude = pressureAltitude;
+    }
+
+    public void setCopy(METAR metar){
+        this.altimeter= metar.getAltimeter();
+        this.meta=metar.getMeta();
+        this.densityAltitude=metar.getDensityAltitude();
+        this.raw=metar.getRaw();
+        this.dewpoint=metar.getDewpoint();
+        this.clouds=metar.getClouds();
+        this.flightRules=metar.getFlightRules();
+        this.other=metar.getOther();
+        this.pressureAltitude=metar.getPressureAltitude();
+        this.relativeHumidity= metar.getRelativeHumidity();
+        this.remarks=metar.getRemarks();
+        this.remarksInfo=metar.getRemarksInfo();
+        this.runwayVisibility=metar.getRunwayVisibility();
+        this.sanitized=metar.getSanitized();
+        this.station=metar.getStation();
+        this.temperature=metar.getTemperature();
+        this.time=metar.getTime();
+        this.units=metar.getUnits();
+        this.visibility=metar.getVisibility();
+        this.windDirection=metar.getWindDirection();
+        this.windGust=metar.getWindGust();
+        this.windSpeed=metar.getWindSpeed();
+        this.windVariableDirection=metar.getWindVariableDirection();
+        this.wxCodes=metar.getWxCodes();
     }
 
     public Units getUnits() {

@@ -2,6 +2,7 @@ package com.example.metar_taf;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.metar_taf.Aeroport;
+import com.example.metar_taf.pojo_metar.METAR;
+import com.google.gson.Gson;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class AeroportListAdapter extends BaseAdapter {
     private Context context;
@@ -54,20 +70,19 @@ public class AeroportListAdapter extends BaseAdapter {
         TextView vent = (TextView) view.findViewById(R.id.Aero_wind);
 
         OACI.setText(aero.getOACI());
-        city.setText(aero.getCity());
-        date.setText(aero.getDate());
-        time.setText(aero.getTime());
-        temperature.setText(aero.getTemperature());
-        pression.setText(aero.getPression());
-        nuages.setText(aero.getNuages());
-        vent.setText(aero.getVent());
+
+
+
+
+
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),MainActivity3.class);
+                /*Intent intent = new Intent(view.getContext(),MainActivity3.class);
                 intent.putExtra("aeroport",(Aeroport) getItem(i));
-                context.startActivity(intent);
+                context.startActivity(intent);*/
             }
         });
 

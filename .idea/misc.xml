@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/airport_selector.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/edittextstyle.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/metar_selector.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/taf_selector.xml" value="0.371875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.340625" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main3.xml" value="0.35572916666666665" />

@@ -3,22 +3,27 @@ package com.example.metar_taf;
 import android.util.Log;
 
 
+import java.io.IOException;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Callback;
+import okhttp3.Response;
 
 public class API_Service {
 
     private static final String TAG = "API_Service";
+
 
     public void searchMETAR(String query, Callback callback){
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder().url("https://avwx.rest/api/metar/"+query+"?options=&airport=true&reporting=true&format=json&onfail=cache&token=r-He1BNsyYCyVTzA0-T8xqAVVtBlsu7ib8BWPiuZ-uc").build();
         Log.d(TAG, "requete=" + request.toString());
-
         client.newCall(request).enqueue(callback);
     }
+
+
 
     // Code à copier pour faire appel à la méthode SearchMETAR depuis une activité
     /*new API_service().searchMETAR(query, new Callback() {
