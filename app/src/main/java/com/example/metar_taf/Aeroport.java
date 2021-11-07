@@ -26,6 +26,7 @@ public class Aeroport implements Serializable {
     private String OACI;
     private METAR metar;
     private Station station;
+    private Taf taf;
 
 
 
@@ -33,6 +34,14 @@ public class Aeroport implements Serializable {
     public Aeroport(String OACI)  {
         this.OACI = OACI;
 
+    }
+
+    public Taf getTaf() {
+        return taf;
+    }
+
+    public void setTaf(Taf taf) {
+        this.taf = taf;
     }
 
     public Station getStation() {

@@ -2,6 +2,7 @@ package com.example.metar_taf;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,7 @@ public class AeroportListAdapter extends BaseAdapter {
         OACI.setText(aero.getOACI());
         aero.setMetar(Global.metar);
         aero.setStation(Global.station);
+        aero.setTaf(Global.taf);
 
         temperature.setText(Global.metar.getTemperature().getValue().toString()+"°C");
         pression.setText(aero.getMetar().getAltimeter().getValue().toString()+"hPa");
@@ -92,7 +94,7 @@ public class AeroportListAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(),MainActivity3.class);
-                //intent.putExtra("aeroport",(Aeroport) getItem(i));
+                //intent.putExtra("aeroport", (Bundle) getItem(i));
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

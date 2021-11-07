@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -74,7 +76,10 @@ public class MainActivity3 extends AppCompatActivity {
         GeoPoint startPoint = new GeoPoint(48.01906, 0.15798);
         mapController.setCenter(startPoint);
 
-
+        //intent
+        //Intent intent = getIntent();
+        //Aeroport aero =(Aeroport) intent.getSerializableExtra("aeroport");
+        //Toast.makeText(getApplicationContext(), aero.getOACI(), Toast.LENGTH_SHORT).show();
 
     }
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

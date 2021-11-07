@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 
 import com.example.metar_taf.pojo_station.Station;
+import com.example.metar_taf.pojo_taf.Taf;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -181,6 +182,32 @@ public class MainActivity2 extends AppCompatActivity {
 
 
                                                   Global.station = station;
+
+                                              }
+
+                                          });
+                                          new API_Service().searchTAF(query, new Callback() {
+
+                                              @Override
+                                              public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                                                  Toast.makeText(getApplicationContext(), "Error, OACI Invalid!", Toast.LENGTH_SHORT).show();
+                                              }
+
+                                              @Override
+                                              public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                                                  final Gson gson = new Gson();
+                                                  Log.d(TAG, "response from service = " + response);
+
+                                                  ResponseBody body = response.body();
+                                                  String value = body.string();
+
+                                                  Log.d(TAG, "response body to string =" + value);
+                                                  Taf taf = gson.fromJson(value, Taf.class);
+
+                                                  Log.d(TAG, "response  en json =" + taf.toString());
+
+
+                                                  Global.taf = taf;
 
                                               }
 
