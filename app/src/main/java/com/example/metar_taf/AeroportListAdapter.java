@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.List;
 
 import okhttp3.Call;
@@ -77,24 +78,24 @@ public class AeroportListAdapter extends BaseAdapter {
 
         temperature.setText(Global.metar.getTemperature().getValue().toString()+"°C");
         pression.setText(aero.getMetar().getAltimeter().getValue().toString()+"hPa");
-        nuages.setText(aero.getMetar().getClouds().get(0).getRepr().toString());
+        //nuages.setText(aero.getMetar().getClouds().get(0).getRepr().toString());
         vent.setText(aero.getMetar().getWindSpeed().getValue().toString()+"kt");
 
-        String[] arrOfStr = aero.getMetar().getMeta().getTimestamp().toString().split("T");
+        /*String[] arrOfStr = aero.getMetar().getMeta().getTimestamp().toString().split("T");
         date.setText(arrOfStr[0]);
         //String[] arrOfstr = arrOfStr[1].split(".");
         time.setText(arrOfStr[1]);
         city.setText(aero.getStation().getCity().toString()+" "+ aero.getStation().getName().toString());
 
         //pression.setText(aero.getMetar().getAltimeter().getValue().toString()+"hPa");
-
+        */
 
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(),MainActivity3.class);
-                //intent.putExtra("aeroport", (Bundle) getItem(i));
+                //intent.putExtra("aeroport",(Aeroport)getItem(i));
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

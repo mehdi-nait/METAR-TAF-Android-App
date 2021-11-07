@@ -16,6 +16,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 
 public class MainActivity3 extends AppCompatActivity {
 
-
+    float X1,X2,Y1,Y2;
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
 
@@ -52,6 +53,32 @@ public class MainActivity3 extends AppCompatActivity {
         View view = inflater.inflate(R.layout.top_bar,null);
         actionBar.setCustomView(view);
 
+
+        BottomNavigationView bottom_nav = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottom_nav.setSelectedItemId(R.id.nav_airport);
+
+        bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.nav_airport:
+                        return true;
+
+                    case R.id.nav_metar:
+                        startActivity(new Intent(getApplicationContext(),MetarActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_taf:
+                        startActivity(new Intent(getApplicationContext(),TafActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+
+                return false;
+            }
+        });
 
         map = (MapView) findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
@@ -111,6 +138,24 @@ public class MainActivity3 extends AppCompatActivity {
                     permissionsToRequest.toArray(new String[0]),
                     REQUEST_PERMISSIONS_REQUEST_CODE);
         }
+    }
+
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                X1 = event.getX();
+                Y1 = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                X2 = event.getX();
+                Y2 = event.getY();
+
+                if (X1 > X2) { //swipe left
+                    Intent intent = new Intent(getApplicationContext(), MetarActivity.class);
+                    startActivity(intent);
+                }
+        }
+        return false;
     }
 
 

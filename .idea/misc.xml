@@ -7,12 +7,15 @@
         <entry key="app/src/main/res/drawable/edittextstyle.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/metar_selector.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/selector.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/taf_selector.xml" value="0.371875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.340625" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main3.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main_test.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_maintest.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/layout/activity_metar.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/activity_taf.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/adapter_item.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/content_main_activity_test.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_airport.xml" value="0.33106884057971014" />
@@ -21,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.33106884057971014" />
         <entry key="app/src/main/res/layout/top_bar.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.35572916666666665" />
       </map>

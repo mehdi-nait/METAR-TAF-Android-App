@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_airport"
+        android:title="Airport"
+        android:icon="@drawable/airport_selector"></item>
+
+    <item android:id="@+id/nav_metar"
+        android:title="Metar"
+        android:icon="@drawable/metar_selector"></item>
+
+    <item android:id="@+id/nav_taf"
+        android:title="Taf"
+        android:icon="@drawable/taf_selector"></item>
+</menu>
