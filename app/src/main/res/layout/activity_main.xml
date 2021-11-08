@@ -23,7 +23,7 @@
                 android:id="@+id/greetings_activite1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Header_accueil"
+                android:text="@string/good_evening"
                 android:textColor="@color/text_color"
                 android:textSize="30dp"/>
 
@@ -31,7 +31,7 @@
                 android:id="@+id/txt_activite1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Where are we headed tonight?"
+                android:text="@string/txt_activite1"
                 android:textColor="@color/text_color"
                 android:textSize="18dp"
                 android:layout_marginTop="10dp">
@@ -86,7 +86,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Astre 2022, all rights reserved."
+                android:text="@string/astre_2022"
                 android:textColor="@color/text_color"/>
         </LinearLayout>
     </com.google.android.material.bottomnavigation.BottomNavigationView>

@@ -44,7 +44,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Aeroport"
+                            android:text="@string/aeroport_taf"
                             android:textColor="@color/black"></TextView>
                         <TextView
                             android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Start Time        :"></TextView>
+                    android:text="@string/start_time_taf"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="End Time          :"></TextView>
+                    android:text="@string/end_time_taf"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -129,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Longitude          :"></TextView>
+                    android:text="@string/longitude_taf"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Latitude             :"></TextView>
+                    android:text="@string/latitude_taf"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -171,7 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Elevation           :"></TextView>
+                    android:text="@string/elevation_taf"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -192,7 +192,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Wind speed         :"></TextView>
+                    android:text="@string/wind_speed_taf"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -212,7 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Visibility               :"></TextView>
+                    android:text="@string/visibility_taf" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -233,7 +233,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Clouds                :"></TextView>
+                    android:text="@string/clouds_taf"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"

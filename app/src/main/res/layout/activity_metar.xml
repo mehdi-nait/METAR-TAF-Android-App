@@ -43,7 +43,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Aeroport"
+                            android:text="@string/aeroport_metar"
                             android:textColor="@color/black"></TextView>
                         <TextView
                             android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="temperature : "
+                android:text="@string/temperature_metar"
                 android:padding="10dp"></TextView>
 
             <TextView
@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="DewPoint      : "
+                android:text="@string/dewpoint_metar"
                 android:padding="10dp"></TextView>
 
             <TextView
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Pressure        : "
+                android:text="@string/pressure_metar"
                 android:padding="10dp"></TextView>
 
             <TextView
@@ -152,7 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="wind speed    : "
+                android:text="@string/wind_speed_metar"
                 android:padding="10dp"></TextView>
 
             <TextView
@@ -175,7 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="wind degree   : "
+                android:text="@string/wind_degree_metar"
                 android:padding="10dp"></TextView>
 
             <TextView
@@ -198,7 +198,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Visibility         : "
+                android:text="@string/visibility_metar"
                 android:padding="10dp"></TextView>
 
             <TextView
@@ -222,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Clouds           : "
+                android:text="@string/clouds_metar"
                 android:padding="10dp"></TextView>
 
             <TextView

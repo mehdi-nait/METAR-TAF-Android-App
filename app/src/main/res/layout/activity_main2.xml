@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/clear"
                 android:drawableLeft="@drawable/trash"
-                android:text="clear"
+                android:text="@string/clear"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/bar_color"
                 android:textColor="@color/text_color">

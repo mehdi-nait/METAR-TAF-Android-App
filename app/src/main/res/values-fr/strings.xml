@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Metar-taf</string>
+    <string name="code_text">Code :</string>
+    <string name="find">Chercher</string>
+    <string name="OACI_code">code</string>
+    <string name="title_activity_main3">MainActivity3</string>
+    <string name="title_home">Accueil</string>
+    <string name="title_notifications">Notificvations</string>
+    <string name="activity_2_text">Où allons nous ce soir?</string>
+    <string name="Button_activity2">Ajouter une destination</string>
+    <string name="good_evening">Bonjour,</string>
+    <string name="title_dashboard">Tableau de bord</string>
+    <string name="txt_activite1">Où allons nous ce soir?</string>
+    <string name="astre_2022">Astre 2022 Tout droit réservé</string>
+    <string name="clear">Nettoyer</string>
+    <string name="aeroport">Aeroport</string>
+    <string name="country">Pays :</string>
+    <string name="altitude">Altitude :</string>
+    <string name="coords">Coords :</string>
+    <string name="aeroport_metar">Aeroport</string>
+    <string name="temperature_metar">Température :</string>
+    <string name="dewpoint_metar">Point de Rosée :</string>
+    <string name="pressure_metar">Pression :</string>
+    <string name="wind_speed_metar">Vitesse du vent :</string>
+    <string name="visibility_metar">Visibilité :</string>
+    <string name="clouds_metar">Nuages :</string>
+    <string name="aeroport_taf">Aeroport</string>
+    <string name="start_time_taf">Heure de début :</string>
+    <string name="end_time_taf">Heure de fin :</string>
+    <string name="longitude_taf">Longitude :</string>
+    <string name="latitude_taf">Latitude :</string>
+    <string name="elevation_taf">Élévation :</string>
+    <string name="wind_speed_taf">Vitesse du vent :</string>
+    <string name="visibility_taf">Visibilité :</string>
+    <string name="clouds_taf">Nuages :</string>
+    <string name="oaci_code_adapter">Code OACI</string>
+    <string name="wind_degree_metar">Direction du vent :</string>
 </resources>

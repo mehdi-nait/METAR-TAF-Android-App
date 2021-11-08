@@ -47,7 +47,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Aeroport"
+                            android:text="@string/aeroport"
                             android:textColor="@color/black"></TextView>
                         <TextView
                             android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Country :"></TextView>
+                    android:text="@string/country"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Altitude :"></TextView>
+                    android:text="@string/altitude"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -141,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Coords :"></TextView>
+                    android:text="@string/coords"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
