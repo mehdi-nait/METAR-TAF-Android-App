@@ -46,6 +46,7 @@ import okhttp3.ResponseBody;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.Semaphore;
 
 
 public class MainActivity2 extends AppCompatActivity {
@@ -76,9 +77,11 @@ public class MainActivity2 extends AppCompatActivity {
         actionBar.setCustomView(view);
 
         //List adapter
-        List<Aeroport> list_aero = new ArrayList<>();
+        ArrayList<Aeroport> list_aero = new ArrayList<>();
         ListView list_view = (ListView) findViewById(R.id.list_aero);
-        list_view.setAdapter(new AeroportListAdapter(getApplicationContext(),list_aero));
+        //AeroportListAdapter aeroportListAdapter=new AeroportListAdapter(this,list_aero);
+        CustomViewList aeroportListAdapter=new CustomViewList(this,list_aero);
+        list_view.setAdapter(aeroportListAdapter);
 
         //Home button
         home = findViewById(R.id.home_button);
@@ -126,13 +129,16 @@ public class MainActivity2 extends AppCompatActivity {
                 list_view.setAdapter(new AeroportListAdapter(getApplicationContext(),list_aero));
             }
         });
-
+        Semaphore semaphore=new Semaphore(0);
+        Semaphore semaphore1=new Semaphore(0);
+        Semaphore semaphore2=new Semaphore(0);
         add_destination = (Button) findViewById(R.id.add_destination);
         add_destination.setOnClickListener(new View.OnClickListener() {
 
                                       @Override
                                       public void onClick(View v) {
                                           query = OACI2.getText().toString();
+                                          Aeroport aeroport2=new Aeroport(query.toUpperCase());
 
                                           new API_Service().searchMETAR(query, new Callback() {
 
@@ -151,11 +157,12 @@ public class MainActivity2 extends AppCompatActivity {
 
                                                   Log.d(TAG, "response body to string =" + value);
                                                   METAR metar = gson.fromJson(value, METAR.class);
-
+                                                  aeroport2.setMetar(metar);
                                                   Log.d(TAG, "response  en json =" + metar.toString());
 
                                                   Log.d(TAG, "temp = " + metar.getTemperature().getValue() + "°C");
                                                   Global.metar = metar;
+                                                  semaphore.release();
 
                                               }
 
@@ -177,12 +184,13 @@ public class MainActivity2 extends AppCompatActivity {
 
                                                   Log.d(TAG, "response body to string =" + value);
                                                   Station station = gson.fromJson(value, Station.class);
+                                                  aeroport2.setStation(station);
 
                                                   Log.d(TAG, "response  en json =" + station.toString());
 
 
                                                   Global.station = station;
-
+                                                  semaphore1.release();
                                               }
 
                                           });
@@ -203,18 +211,27 @@ public class MainActivity2 extends AppCompatActivity {
 
                                                   Log.d(TAG, "response body to string =" + value);
                                                   Taf taf = gson.fromJson(value, Taf.class);
-
+                                                  aeroport2.setTaf(taf);
                                                   Log.d(TAG, "response  en json =" + taf.toString());
 
-
                                                   Global.taf = taf;
+                                                  semaphore2.release();
 
                                               }
 
                                           });
 
-                                          list_aero.add(new Aeroport(query.toUpperCase()));
-                                          list_view.deferNotifyDataSetChanged();
+                                          try {
+                                              semaphore.acquire();
+                                              semaphore1.acquire();
+                                              semaphore2.acquire();
+                                          } catch (InterruptedException e) {
+                                              e.printStackTrace();
+                                          }
+                                          aeroportListAdapter.add(aeroport2);
+                                          aeroportListAdapter.notifyDataSetChanged();
+                                          Log.d(TAG,"apres ajout");
+                                          //}
                                           //Log.d("API_Service",_metar.toString());
                                       }
 
