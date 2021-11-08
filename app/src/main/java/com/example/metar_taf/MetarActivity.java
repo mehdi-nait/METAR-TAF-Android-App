@@ -14,12 +14,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MetarActivity extends AppCompatActivity {
 
     float X1,X2,Y1,Y2;
+    ImageView home,info,logo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,55 @@ public class MetarActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        //home
+        home = findViewById(R.id.home_button);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_home = new Intent(
+                        MetarActivity.this,
+                        MainActivity.class
+                );
+                startActivity(intent_home);
+            }
+        });
+
+
+        logo = findViewById(R.id.logo_button);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_home = new Intent(
+                        MetarActivity.this,
+                        MainActivity.class
+                );
+                startActivity(intent_home);
+            }
+        });
+
+        Aeroport aero = Global.aeroport;
+
+        TextView aeroport_name = (TextView) findViewById(R.id.aeroport_name);
+        TextView aeroport_oacii = (TextView) findViewById(R.id.aeroport_oacii);
+        TextView metar_temperature = (TextView) findViewById(R.id.metar_temperature);
+        TextView metar_dewpoint = (TextView) findViewById(R.id.metar_dewpoint);
+        TextView metar_pressure = (TextView) findViewById(R.id.metar_pressure);
+        TextView metar_windSpeed = (TextView) findViewById(R.id.metar_windSpeed);
+        TextView metar_windDegree = (TextView)findViewById(R.id.metar_windDegree);
+        TextView metar_visibility = (TextView) findViewById(R.id.metar_visibility);
+        TextView metar_clouds = (TextView) findViewById(R.id.metar_clouds);
+
+
+        aeroport_name.setText(aero.getStation().getName());
+        aeroport_oacii.setText(aero.getOACI());
+        metar_temperature.setText(aero.getMetar().getTemperature().getValue().toString()+" °C");
+        metar_dewpoint.setText(aero.getMetar().getDewpoint().getValue().toString()+" °C");
+        metar_pressure.setText(aero.getMetar().getAltimeter().getValue().toString()+" hPa");
+        metar_windSpeed.setText(aero.getMetar().getWindSpeed().getValue().toString()+" kt");
+        metar_windDegree.setText(aero.getMetar().getWindDirection().getValue().toString()+" °");
+        metar_visibility.setText(aero.getMetar().getVisibility().getValue().toString()+" m");
+        //metar_clouds.setText(aero.getMetar().getClouds().get().getRepr().toString());
     }
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {

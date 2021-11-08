@@ -14,12 +14,17 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.w3c.dom.Text;
 
 public class TafActivity extends AppCompatActivity {
 
     float X1,X2,Y1,Y2;
+    ImageView home,info,logo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +67,56 @@ public class TafActivity extends AppCompatActivity {
                 return false;
             }
         });
+        //home
+        home = findViewById(R.id.home_button);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_home = new Intent(
+                        TafActivity.this,
+                        MainActivity.class
+                );
+                startActivity(intent_home);
+            }
+        });
+
+
+        logo = findViewById(R.id.logo_button);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_home = new Intent(
+                        TafActivity.this,
+                        MainActivity.class
+                );
+                startActivity(intent_home);
+            }
+        });
+
+        Aeroport aero = Global.aeroport;
+
+        TextView aeroport_name = (TextView) findViewById(R.id.aeroport_name);
+        TextView aeroport_oacii = (TextView) findViewById(R.id.aeroport_oacii);
+        TextView taf_startTime = (TextView) findViewById(R.id.taf_startTime);
+        TextView taf_endTime = (TextView) findViewById(R.id.taf_endTime);
+        TextView taf_longitude = (TextView) findViewById(R.id.taf_longitude);
+        TextView taf_latitude = (TextView) findViewById(R.id.taf_latitude);
+        TextView taf_elevation = (TextView) findViewById(R.id.taf_elevation);
+        TextView taf_windSpeed = (TextView) findViewById(R.id.taf_windSpeed);
+        TextView taf_visibility = (TextView) findViewById(R.id.taf_visibility);
+        TextView taf_clouds = (TextView) findViewById(R.id.taf_clouds);
+
+        aeroport_name.setText(aero.getStation().getName());
+        aeroport_oacii.setText(aero.getOACI());
+
+        taf_startTime.setText(aero.getTaf().getForecast().get(0).getStartTime().getDt().toString());
+        taf_endTime.setText(aero.getTaf().getForecast().get(0).getEndTime().getDt().toString());
+        taf_longitude.setText(aero.getStation().getLongitude().toString()+ " °");
+        taf_latitude.setText(aero.getStation().getLatitude().toString()+ " °");
+        taf_elevation.setText(aero.getStation().getElevationM().toString()+" m");
+        taf_windSpeed.setText(aero.getTaf().getForecast().get(0).getWindSpeed().getValue().toString()+" kt");
+        taf_visibility.setText(aero.getTaf().getForecast().get(0).getVisibility().getValue().toString()+" m");
+        //taf_clouds.setText();
     }
 
     public boolean onTouchEvent(MotionEvent event) {

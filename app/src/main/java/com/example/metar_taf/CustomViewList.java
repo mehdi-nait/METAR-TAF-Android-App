@@ -49,12 +49,14 @@ public class CustomViewList extends ArrayAdapter<Aeroport> {
         pression.setText(aeroport.getMetar().getAltimeter().getValue().toString()+"hPa");
         //nuages.setText(aeroport.getMetar().getClouds().get(0).getRepr().toString());
         vent.setText(aeroport.getMetar().getWindSpeed().getValue().toString()+"kt");
+
+
 /**
         String[] arrOfStr = aeroport.getMetar().getMeta().getTimestamp().toString().split("T");
         date.setText(arrOfStr[0]);
         //String[] arrOfstr = arrOfStr[1].split(".");
         time.setText(arrOfStr[1]);
-        city.setText(aeroport.getStation().getCity().toString()+" "+ aeroport.getStation().getName().toString());**/
+        city.setText(aeroport.getStation().getCity().toString()+" "+ aeroport.getStation().getName().toString());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,7 @@ public class CustomViewList extends ArrayAdapter<Aeroport> {
                 //intent.putExtra("aeroport",(Aeroport) getItem(i));
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
+                Global.aeroport = (Aeroport) getItem(i);
             }
         });
 

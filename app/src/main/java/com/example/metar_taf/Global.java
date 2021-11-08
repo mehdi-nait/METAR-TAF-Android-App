@@ -11,6 +11,7 @@ public class Global {
 
     public static METAR metar;
     public static Station station;
-    public static List<METAR> metarList= new ArrayList<>();
     public static Taf taf;
+    public static Aeroport aeroport;
+
 }

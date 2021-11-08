@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -239,6 +240,16 @@ public class MainActivity2 extends AppCompatActivity {
 
 
         );
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(view.getContext(),MainActivity3.class);
+                //intent.putExtra("aeroport",(Aeroport) getItem(i));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                Global.aeroport = aeroportListAdapter.getItem(i);
+            }
+        });
 
         //Log.d("API_Service",_metar.toString());
 

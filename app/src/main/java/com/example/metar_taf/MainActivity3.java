@@ -18,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,6 +30,7 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -35,6 +38,7 @@ public class MainActivity3 extends AppCompatActivity {
 
     float X1,X2,Y1,Y2;
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
+    ImageView home,info,logo;
     private MapView map = null;
 
     @Override
@@ -62,8 +66,6 @@ public class MainActivity3 extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId()){
-                    case R.id.nav_airport:
-                        return true;
 
                     case R.id.nav_metar:
                         startActivity(new Intent(getApplicationContext(),MetarActivity.class));
@@ -74,9 +76,37 @@ public class MainActivity3 extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),TafActivity.class));
                         overridePendingTransition(0,0);
                         return true;
+
+                    case R.id.nav_airport:
+                        return true;
                 }
 
                 return false;
+            }
+        });
+
+        home = findViewById(R.id.home_button);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_home = new Intent(
+                        MainActivity3.this,
+                        MainActivity.class
+                );
+                startActivity(intent_home);
+            }
+        });
+
+
+        logo = findViewById(R.id.logo_button);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_home = new Intent(
+                        MainActivity3.this,
+                        MainActivity.class
+                );
+                startActivity(intent_home);
             }
         });
 
@@ -104,9 +134,25 @@ public class MainActivity3 extends AppCompatActivity {
         mapController.setCenter(startPoint);
 
         //intent
-        //Intent intent = getIntent();
-        //Aeroport aero =(Aeroport) intent.getSerializableExtra("aeroport");
+        Intent intent = getIntent();
+        Aeroport aero = Global.aeroport;
         //Toast.makeText(getApplicationContext(), aero.getOACI(), Toast.LENGTH_SHORT).show();
+
+        TextView aeroport_name = (TextView) findViewById(R.id.aeroport_name);
+        TextView aeroport_oacii = (TextView) findViewById(R.id.aeroport_oacii);
+        TextView aeroport_country = (TextView) findViewById(R.id.aeroport_country);
+        TextView aeroport_coordinates  = (TextView) findViewById(R.id.aeroport_coordinates);
+
+
+        aeroport_name.setText(aero.getStation().getName());
+        aeroport_oacii.setText(aero.getOACI());
+        aeroport_country.setText(aero.getStation().getCountry());
+        aeroport_coordinates.setText(aero.getStation().getLatitude().toString()+"° "+ aero.getStation().getLongitude().toString());
+
+
+        mapController.setZoom(12.0);
+        GeoPoint Point = new GeoPoint(aero.getStation().getLatitude(), aero.getStation().getLongitude());
+        mapController.setCenter(Point);
 
     }
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
