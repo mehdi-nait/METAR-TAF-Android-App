@@ -196,9 +196,15 @@ public class MainActivity3 extends AppCompatActivity {
                 X2 = event.getX();
                 Y2 = event.getY();
 
-                if (X1 > X2) { //swipe left
+                if (X1 < X2) { //swipe right
+                    Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                    startActivity(intent);
+                }
+
+                if (X1 > X2) { //swipe right
                     Intent intent = new Intent(getApplicationContext(), MetarActivity.class);
                     startActivity(intent);
+
                 }
         }
         return false;

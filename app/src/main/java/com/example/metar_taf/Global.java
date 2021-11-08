@@ -13,5 +13,6 @@ public class Global {
     public static Station station;
     public static Taf taf;
     public static Aeroport aeroport;
+    public static List<Aeroport> tabAeroport = new ArrayList<>();
 
 }

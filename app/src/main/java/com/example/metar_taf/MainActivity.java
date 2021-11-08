@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setCustomView(view);
 
         find_button = (Button) findViewById(R.id.find_button);
-        code = (EditText) findViewById(R.id.OACI);
+        //code = (EditText) findViewById(R.id.OACI);
 
         find_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this,
                         MainActivity2.class
                 );
-                intent.putExtra("message",code.getText().toString());
+                //intent.putExtra("message",code.getText().toString());
                 startActivity(intent);
             }
         });

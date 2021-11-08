@@ -127,9 +127,18 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 list_aero.clear();
+                Global.tabAeroport.clear();
                 list_view.setAdapter(new AeroportListAdapter(getApplicationContext(),list_aero));
             }
         });
+
+        if(Global.tabAeroport!=null){
+            for(int i=0;i<Global.tabAeroport.size();i++){
+                aeroportListAdapter.add(Global.tabAeroport.get(i));
+                aeroportListAdapter.notifyDataSetChanged();
+            }
+        }
+
         Semaphore semaphore=new Semaphore(0);
         Semaphore semaphore1=new Semaphore(0);
         Semaphore semaphore2=new Semaphore(0);
@@ -172,7 +181,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                                               @Override
                                               public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                                                  Toast.makeText(getApplicationContext(), "Error, OACI Invalid!", Toast.LENGTH_SHORT).show();
+                                                  //Toast.makeText(getApplicationContext(), "Error, OACI Invalid!", Toast.LENGTH_SHORT).show();
                                               }
 
                                               @Override
@@ -230,6 +239,7 @@ public class MainActivity2 extends AppCompatActivity {
                                               e.printStackTrace();
                                           }
                                           aeroportListAdapter.add(aeroport2);
+                                          Global.tabAeroport.add(aeroport2);
                                           aeroportListAdapter.notifyDataSetChanged();
                                           Log.d(TAG,"apres ajout");
                                           //}
